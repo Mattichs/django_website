@@ -1,0 +1,27 @@
+{% extends 'photos/main.html'%}
+
+{% block content %}
+
+<h1>{{detailed_work.name}}</h1>
+<p>{{detailed_work.description}}</p>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label >Inserisci immagini</label>
+        <input type="file" name="images" multiple class="form-control-file">
+        <button type="submit" class="btn btn-primary m-3">Submit</button>    
+    </div>
+</form>
+
+<div class="flexbox">
+    {% for img in all_images %}
+        <div class="item">
+            <img src="{{ img.image.url }}" class="image" alt="...">
+        </div>
+    {% empty %}
+        <h1>No photo...</h1>
+    {% endfor%}
+</div>
+
+
+{% endblock content%}

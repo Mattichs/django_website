@@ -1,0 +1,27 @@
+{% extends 'photos/main.html'%}
+
+{% block content %}
+<a href="{% url 'add' %}" class="btn btn-dark btn-block btn-sm m-1">
+    Aggiungi un lavoro
+</a>
+
+<p>Homepage</p>
+<div class="col-md-9">
+    <div class="row">
+        {% for work in works %}
+            <div class="col-md-4">
+                <div class="card my-2">
+                    <img src="{{ work.cover_image.url }}" class="image-thumbail" alt="...">
+                    <div class="card-body">
+                        <p>{{ work.name }}</p>
+                    </div>
+                    <a href="{% url 'workDetail' work.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+                </div>
+            </div>
+        {% empty %}
+        <h1>No Works...</h1>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content%}

@@ -1,0 +1,40 @@
+
+.flexbox{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    height: 100vw;
+}
+.item{
+    position:relative;
+    width: 33.33%; 
+    padding: 2px;
+}
+.item > img {
+    width: 100%;
+    display: block;
+    transition:all .8s;
+    margin: auto;
+}
+
+@media ( max-width : 860px ){
+  .flexbox{
+    height:220vw;
+  }
+  .flexbox > .item{
+      width:50%;
+  }
+}
+@media ( max-width : 667px ){
+  .flexbox{
+    height:auto;
+  }
+  .flexbox >  .item{
+      width:100%;
+    }
+}
+
+  
