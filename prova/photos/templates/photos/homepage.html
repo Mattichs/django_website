@@ -1,27 +1,31 @@
 {% extends 'photos/main.html'%}
 
 {% block content %}
-<a href="{% url 'add' %}" class="btn btn-dark btn-block btn-sm m-1">
-    Aggiungi un lavoro
-</a>
 
-<p>Homepage</p>
-<div class="col-md-9">
+<div class="container">
     <div class="row">
-        {% for work in works %}
-            <div class="col-md-4">
-                <div class="card my-2">
-                    <img src="{{ work.cover_image.url }}" class="image-thumbail" alt="...">
-                    <div class="card-body">
-                        <p>{{ work.name }}</p>
+        {% for work in works %} 
+        <!-- col-lg-4 mb-4 d-flex -->
+        <div class="col-md-4 col-sm-6 col-xs-6 mb-4 d-flex">
+            <div class="card">
+                <img class="card-img-top img-thumbnail" src="{{ work.cover_image.url }}" alt="Card image cap" 
+                    style="width: 100%; height: 15vw; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ work.name }}</h5>
+                    <p class="card-text" style="width: 100%; height: 5vw; overflow: scroll;">{{ work.description }}</p>
+                    <div class="card-footer">
+                        <a href="{% url 'workDetail' work.id %}" class="btn btn-primary ">View</a>
                     </div>
-                    <a href="{% url 'workDetail' work.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
                 </div>
             </div>
-        {% empty %}
-        <h1>No Works...</h1>
-        {% endfor %}
+        </div>
+        
+    {% empty %}
+    <h1>No Works...</h1>
+    {% endfor %}
     </div>
-</div>
+  </div>
+    
 
-{% endblock content%}
+
+{% endblock content%} 

@@ -4,6 +4,8 @@
 
 <h1>{{detailed_work.name}}</h1>
 <p>{{detailed_work.description}}</p>
+
+{% if user.is_authenticated %}
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group">
@@ -12,16 +14,22 @@
         <button type="submit" class="btn btn-primary m-3">Submit</button>    
     </div>
 </form>
+{% endif %}
 
-<div class="flexbox">
+<div class="row" data-masonry='{"percentPosition": true }'>
     {% for img in all_images %}
-        <div class="item">
-            <img src="{{ img.image.url }}" class="image" alt="...">
+        <div class="col-6 col-md-4 col-xl-3 pb-3 px-2">
+            <img src="{{ img.image.url }}" class="img-fluid" alt="...">
         </div>
     {% empty %}
         <h1>No photo...</h1>
     {% endfor%}
 </div>
 
+
+<!-- <div class="row gy-4 masonry">
+       
+</div>
+ -->
 
 {% endblock content%}
